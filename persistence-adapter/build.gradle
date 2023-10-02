@@ -1,0 +1,15 @@
+dependencies {
+    implementation project(':common')
+    implementation project(':application')
+
+    implementation('org.postgresql:postgresql:42.3.2')
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    archivesBaseName = "${project.name}"
+    enabled = true
+}

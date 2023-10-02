@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+}
+
+dependencies {
+    implementation project(':application')
+    implementation project(':common')
+    implementation project(':api-adapter')
+    implementation project(':persistence-adapter')
+
+    implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-undertow')
+
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.2'
+
+    implementation('io.springfox:springfox-swagger-ui:2.9.2')
+    implementation('io.springfox:springfox-swagger2:2.9.2')
+}
+
+jar {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+                'Main-Class': 'br.com.orla.Application'
+        )
+    }
+    archivesBaseName = "orla-project"
+}
+
+bootJar {
+    enabled = true
+}
